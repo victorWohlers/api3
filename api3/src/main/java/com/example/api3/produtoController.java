@@ -36,7 +36,7 @@ public class produtoController {
 
     }
 
-    private void adicionarProdutos(){
+    private void adicionarProdutos() {
         Produtos produto1 = new Produtos();
         produto1.setId(1);
         produto1.setNome("Iphone 15 pro max");
@@ -124,8 +124,8 @@ public class produtoController {
     }
 
 
-
-    @GetMapping("/produto/{id}") // O {id} é um parâmetro que será passado na URL, permitindo que o cliente especifique qual produto deseja buscar colocando o numero do id.
+    @GetMapping("/produto/{id}")
+    // O {id} é um parâmetro que será passado na URL, permitindo que o cliente especifique qual produto deseja buscar colocando o numero do id.
     public Produtos getProdutoPorId(@PathVariable int id) { // - O parâmetro @PathVariable int id significa que o método vai receber o valor do parâmetro id que foi definido na URL. Depois o Spring automaticamente irá pagar esse valor e passar para o método.
         for (Produtos produto : listaProdutos) {
             if (produto.getId() == id) { // - Aqui esta verificando se o ID do produto atual obtido através do método getId()) é igual ao id que foi passado como parâmetro por mim na URL.  Se a condição for verdadeira, significa que  encontramos o produto que estava sendo buscado.
@@ -135,36 +135,12 @@ public class produtoController {
         }
         return null; // Retorna null se o produto não for encontrado
     }
-
-    /*
-
-
-
-
-
-3. **for (Produtos produto : listaProdutos) {**:
-   - Inicia um loop que irá iterar sobre cada objeto produto na lista listaProdutos. Esta lista contém todos os produtos que você já adicionou anteriormente.
-   - O loop permite que você examine cada produto na lista para encontrar aquele que corresponde ao ID fornecido.
-
-4. **if (produto.getId() == id) {**:
-   - Aqui está uma condição que verifica se o ID do produto atual (obtido através do método getId()) é igual ao id que foi passado como parâmetro na URL.
-   - Se a condição for verdadeira, significa que encontramos o produto que o usuário está buscando.
-
-5. **return produto;**:
-   - Esta linha retorna o objeto produto que corresponde ao ID fornecido. Assim, o cliente que fez a requisição receberá os detalhes desse produto.
-
-6. **}** (fechamento do bloco if):
-   - Indica o fim do bloco de código que é executado se a condição do if for verdadeira.
-
-7. **}** (fechamento do bloco for):
-   - Indica o fim do loop que percorre a lista de produtos.
-
-8. **return null;**:
-   - Esta linha é executada se nenhum produto na lista corresponder ao ID fornecido. Retornar null indica que não foi encontrado nenhum produto correspondente.
-   - Você pode optar por retornar um objeto de resposta mais informativo ou lançar uma exceção personalizada se preferir um tratamento de erro mais adequado (como um status 404).
-     */
-
 }
+
+
+
+
+
 
 
 
